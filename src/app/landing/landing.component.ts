@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import {OktaWidgetService} from 'app/shared/okta/okta-widget.service';
 
 @Component({
@@ -7,13 +7,19 @@ import {OktaWidgetService} from 'app/shared/okta/okta-widget.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
+ 
 
+ 
   constructor(
     public OktaWidgetService:OktaWidgetService,
   ) { }
 
   async ngOnInit(){
-    this.OktaWidgetService.login();
+    await this.OktaWidgetService.CloseWidget();
+
+    await this.OktaWidgetService.login();
+
+
   }
 
 }
