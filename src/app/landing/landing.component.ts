@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OktaWidgetService} from 'app/shared/okta/okta-widget.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public OktaWidgetService:OktaWidgetService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+    this.OktaWidgetService.login();
   }
 
 }

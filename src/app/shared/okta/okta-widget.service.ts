@@ -42,7 +42,7 @@ export class OktaWidgetService {
     const OktaResMode = this.OktaConfig.strResponseMode;
     const OktaWidgetLogo = this.OktaConfig.strLogo;
     var oktaSignIn = new OktaSignIn({
-      logo: OktaWidgetLogo,
+      // logo: OktaWidgetLogo,
       clientId: OktaClientID,
       baseUrl: OktaBaseURI,
       language: OktaLang,
