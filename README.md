@@ -41,6 +41,38 @@ typescript                      4.0.3
 
 ```
 
+## Configuration
+A configuration file with the name `okta-config.service.ts` needs to be created in the below path,
+
+`/src/app/shared/okta/`
+
+The below is the file contenct,
+
+```
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OktaConfigService {
+  constructor() { }
+  
+  strBaseURI = '[URL for the org e.g. https://atko.okta.com]]';
+  strRedirectURL = '[The redirect URL set in the application]';
+  strClientID = '[Client ID for the app]]';
+  strIssuer = '[Issuer URL]';
+  strPostLogoutURL = '[Post logout URL]]';
+  strScope = ['openid', 'email', 'profile', 'address'];
+  strResponseType = ['token', 'id_token'];
+  strResponseMode = 'fragment';
+  strPrompt = 'login';
+  strPkce = true;
+  strLang = 'ja';
+  strBrand = '#00297A';
+}
+
+```
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding

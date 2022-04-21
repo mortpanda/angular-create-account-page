@@ -71,25 +71,34 @@ export class OktaWidgetService {
 
     });
     console.log(OktaScope);
+
+
+    // ******************************************************************************** //
+    // This section here will move the Widget context to the registration page once loaded
+    // ******************************************************************************** //
     oktaSignIn.on('afterRender', function (context) {
       let element: HTMLElement = document.getElementsByClassName('registration-link')[0] as HTMLElement;
-      element.click();    
+      element.click();
     })
+    // ******************************************************************************** //
+    // 
+    // ******************************************************************************** //
+
     await oktaSignIn.showSignInToGetTokens({
       el: '#okta-signin-container'
     })
-   
-    .then(function (tokens) {     
-      oktaSignIn.authClient.tokenManager.setTokens(tokens);
-      oktaSignIn.remove();
-      const idToken = tokens.idToken;
-      console.log("Hello, " + idToken.claims.email + "! You just logged in! :)");
-      window.location.replace(OktaRedirect);
-      return true;     
-    }).catch(function (err) {
-      console.error(err);
-      return false;
-    });
+
+      .then(function (tokens) {
+        oktaSignIn.authClient.tokenManager.setTokens(tokens);
+        oktaSignIn.remove();
+        const idToken = tokens.idToken;
+        console.log("Hello, " + idToken.claims.email + "! You just logged in! :)");
+        window.location.replace(OktaRedirect);
+        return true;
+      }).catch(function (err) {
+        console.error(err);
+        return false;
+      });
 
   }
 
